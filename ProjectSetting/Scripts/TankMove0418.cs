@@ -5,20 +5,22 @@ using UnityEngine;
 
 public class TankMove0418 : MonoBehaviour
 {
-    [Header("탱크 움직임 제한")]
+    [Header("Setting Of TankSpeed")]
     [Range(1, 50)]
     [SerializeField] float tankSpeed;
     [Range(10, 100)]
     [SerializeField] float tankRotateSpeed;
 
-    [Header("터렛 움직임 제한")]
+    [Header("Setting Of TurretSpeed")]
     [SerializeField] GameObject turretPrefab;
     private float turretRotateSpeed = 80;
 
+    [SerializeField] TankShooter0418 tankShooter0418;
     private void Update()
     {
         Mover();
         RotateTurret();
+        tankShooter0418.Fire();
     }
 
     private void Mover()
