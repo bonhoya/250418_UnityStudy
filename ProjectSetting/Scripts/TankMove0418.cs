@@ -13,7 +13,7 @@ public class TankMove0418 : MonoBehaviour
 
     [Header("터렛 움직임 제한")]
     [SerializeField] GameObject turretPrefab;
-    private float turretRotateSpeed = 50;
+    private float turretRotateSpeed = 80;
 
     private void Update()
     {
@@ -51,11 +51,11 @@ public class TankMove0418 : MonoBehaviour
 
     private void RotateTurret()
     {
-        if(Input.GetKeyDown(KeyCode.D))
+        if(Input.GetKey(KeyCode.D))
         {
             turretPrefab.transform.Rotate(Vector3.up, turretRotateSpeed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             turretPrefab.transform.Rotate(Vector3.up, -turretRotateSpeed * Time.deltaTime);
         }
