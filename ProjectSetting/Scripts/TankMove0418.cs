@@ -1,17 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 
 public class TankMove0418 : MonoBehaviour
 {
+    [Header("탱크 움직임 제한")]
     [Range(1, 50)]
     [SerializeField] float tankSpeed;
     [Range(10, 100)]
     [SerializeField] float tankRotateSpeed;
 
+    [Header("터렛 움직임 제한")]
+    [SerializeField] GameObject turretPrefab;
+    private float turretRotateSpeed = 50;
+
     private void Update()
     {
         Mover();
+        RotateTurret();
     }
 
     private void Mover()
@@ -41,4 +48,17 @@ public class TankMove0418 : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, quaternionVector3, tankRotateSpeed * Time.deltaTime);
         }
     }
+
+    private void RotateTurret()
+    {
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            turretPrefab.transform.Rotate(Vector3.up, turretRotateSpeed * Time.deltaTime);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            turretPrefab.transform.Rotate(Vector3.up, -turretRotateSpeed * Time.deltaTime);
+        }
+    }
+
 }
