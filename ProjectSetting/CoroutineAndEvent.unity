@@ -257,6 +257,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8656466468712644642, guid: 1aa9d638e6a74d9448c8a50f7901e5db, type: 3}
   m_PrefabInstance: {fileID: 1593094959}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1079386679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079386675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81805ffa1b60d32449716466be48ee1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 234320181245752172, guid: 06ce71b3f3797bd4ea0b41685c446961, type: 3}
+  muzzlePoint: {fileID: 545067916}
+  bulletSpeed: 6.3
 --- !u!1 &1145578615
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,6 +446,7 @@ MonoBehaviour:
   tankSpeed: 5.1
   tankRotateSpeed: 29.5
   turretPrefab: {fileID: 1079386675}
+  tankShooter0418: {fileID: 1079386679}
 --- !u!1001 &1593094959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -499,6 +515,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8656466468712816074, guid: 1aa9d638e6a74d9448c8a50f7901e5db, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1227299518}
+    - targetCorrespondingSourceObject: {fileID: 8656466468712816066, guid: 1aa9d638e6a74d9448c8a50f7901e5db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1079386679}
   m_SourcePrefab: {fileID: 100100000, guid: 1aa9d638e6a74d9448c8a50f7901e5db, type: 3}
 --- !u!1 &1765817211
 GameObject:

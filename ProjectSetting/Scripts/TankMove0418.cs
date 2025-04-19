@@ -16,11 +16,37 @@ public class TankMove0418 : MonoBehaviour
     private float turretRotateSpeed = 80;
 
     [SerializeField] TankShooter0418 tankShooter0418;
+    private Coroutine coroutine;
+    
     private void Update()
     {
         Mover();
         RotateTurret();
-        tankShooter0418.Fire();
+        #region ContinuousFireFunc
+        /*if (Input.GetKey(KeyCode.Space) && coroutine == null)
+        {
+            coroutine = StartCoroutine(tankShooter0418.CountinuousFire());
+        }
+        else if (Input.GetKeyUp(KeyCode.Space) && coroutine != null)
+        {
+            StopCoroutine(coroutine);
+            coroutine = null;
+        }*/
+
+        #endregion
+
+        #region ChargingFireFunc
+        if(Input.GetKey(KeyCode.Space) && coroutine == null)
+        {
+            coroutine = StartCoroutine(tankShooter0418.ChargingFire());
+        }
+        else if(Input.GetKeyUp(KeyCode.Space) && coroutine != null && tankShooter0418.isChargeOver == true)
+        {
+            StopCoroutine(coroutine);
+            coroutine = null;
+            tankShooter0418.isChargeOver = false;
+        }
+        #endregion
     }
 
     private void Mover()
