@@ -17,7 +17,8 @@ public class TankMove0418 : MonoBehaviour
 
     [SerializeField] TankShooter0418 tankShooter0418;
     private Coroutine coroutine;
-    
+    private WaitForSeconds waitForSeconds = new WaitForSeconds(1f);
+
     private void Update()
     {
         Mover();
@@ -25,7 +26,7 @@ public class TankMove0418 : MonoBehaviour
         #region ContinuousFireFunc
         /*if (Input.GetKey(KeyCode.Space) && coroutine == null)
         {
-            coroutine = StartCoroutine(tankShooter0418.CountinuousFire());
+            coroutine = StartCoroutine(CountinuousFire());
         }
         else if (Input.GetKeyUp(KeyCode.Space) && coroutine != null)
         {
@@ -38,13 +39,7 @@ public class TankMove0418 : MonoBehaviour
         #region ChargingFireFunc
         if(Input.GetKey(KeyCode.Space) && coroutine == null)
         {
-            coroutine = StartCoroutine(tankShooter0418.ChargingFire());
-        }
-        else if(Input.GetKeyUp(KeyCode.Space) && coroutine != null && tankShooter0418.isChargeOver == true)
-        {
-            StopCoroutine(coroutine);
-            coroutine = null;
-            tankShooter0418.isChargeOver = false;
+            coroutine = StartCoroutine(ChargingFire());
         }
         #endregion
     }
@@ -87,6 +82,34 @@ public class TankMove0418 : MonoBehaviour
         {
             turretPrefab.transform.Rotate(Vector3.up, -turretRotateSpeed * Time.deltaTime);
         }
+    }
+
+    public IEnumerator CountinuousFire()
+    {
+        while (true)
+        {
+            tankShooter0418.Fire();
+            yield return waitForSeconds;
+        }
+    }
+
+    public IEnumerator ChargingFire()
+    {
+        float timer = 0;
+        while (true)
+        {
+            timer += Time.deltaTime * 10;
+            yield return null;
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                break;
+            }
+        }
+
+        float speed = Mathf.Clamp(timer, 1f, 50f);
+        tankShooter0418.Fire(speed);
+        coroutine = null;
+        yield break;
     }
 
 }
